@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Maxs and Mins</title>
+	<script src="script.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body onload="calculate_click()">
+	<div id="main-wrap">
+		<!-- FOREWORD -->
+		<div class="foreword">
+			<div class="container">
+				<h1>Лабораторная работа 16</h1>
+				<h2> Поиск минимумов и максимумов</h2>
+				<h3>Абрашнев Никита</h3>
+			</div>
+		</div>
+		<!-- END OF FOREWORD -->
+
+		<!-- INPUT -->
+		<div class="input">
+			<div class="container">
+				<div class="input-line clearfix">
+					<span class="input-line-label">
+						Элементы, по одному в строке:
+					</span>
+					<textarea class="input-line-field" id="field-elements-id" rows="5">
+					</textarea>
+				</div>
+
+				<div class="input-line clearfix">
+					<button class="input-line-calculate" onclick="calculate_click()">
+						Посчитать
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- END OF INPUT -->
+	</div>
+</body>
+</html>

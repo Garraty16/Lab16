@@ -1,0 +1,96 @@
+#main-wrap{
+	display: block;
+	margin: 0;
+	background-color: #88ccff;
+}
+
+.container{
+	display: block;
+	width: 1170px;
+	margin: 0 auto;
+}
+
+.clearfix:after{
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/* FOREWORD */
+.foreword{
+	display: block;
+	padding-top: 50px;
+}
+
+h1, h2{
+	text-align: center;
+}
+
+h2{
+	font-style: italic;
+	font-weight: normal;
+	color: green;
+}
+
+h3{
+	text-align: right;
+	font-weight: normal;
+}
+
+/* INPUT */
+.input{
+	display: block;
+	margin-top: 30px;
+}
+
+.input .container{
+	padding: 30px;
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 10px;
+}
+
+.input-line{
+	display: block;
+	width: 700px;
+	margin: 10px auto;
+}
+
+.input-line-label{
+	display: block;
+	float: left;
+	margin-top: 10px;
+	width: 40%;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.input-line-field:focus{
+	background-color: #eee;
+}
+
+.input-line-field{
+	display: block;
+	float: left;
+	margin-left: 20px;
+	width: 40%;
+	font-size: 16px;
+	padding: 10px;
+	font-weight: bold;
+}
+
+.input-line-calculate:hover{
+	background-color: #8888ff;
+}
+
+.input-line-calculate{
+	display: block;
+	margin: 50px auto;
+	width: 300px;
+	height: 50px;
+	font-size: 22px;
+	font-weight: bold;
+	color: red;
+	background-color: #66aaff;
+	border-radius: 5px;
+	outline: none;
+}
