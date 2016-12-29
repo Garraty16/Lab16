@@ -1,11 +1,15 @@
 function calculate_click(){
 	var a=[], mins=[], maxs=[];
-	grab_data(a, "field-elements-id");
-	quick_sort(a);
-	a = exclude_repeats(a);
-	grab_mins(a, mins, 3);
-	grab_maxs(a, maxs, 4)
-	alert_results("3-й минимум: ", mins, "4-й максимум: ", maxs);
+		if (!grab_data(a, "field-elements-id"))
+			return false;
+		quick_sort(a);
+		alert_mass(a, "Результаты сортировки:");
+		a = exclude_repeats(a);
+		if (!grab_mins(a, mins, 3))
+			return false;
+		if (!grab_maxs(a, maxs, 4))
+			return false;
+		alert_results("3-й минимум: ", mins, "4-й максимум: ", maxs);
 }
 
 /**
@@ -18,8 +22,16 @@ function calculate_click(){
 function grab_data(a, id){
 	var text = document.getElementById(id).value.split('\n');
 	for (var i in text){
-		a[i] = +text[i];
+			var s = text[i];
+			if (isNaN(s) || s === ""){
+				alert("Строка '" + s + "'" + " не является числом. Введите число.");
+				return false;
+			}
+			else{
+				a[i] = +s;
+			}
 	}
+	return true;
 }
 
 /**
@@ -79,6 +91,15 @@ function quick_sort(data, compare, exchange){
 	qs(0, a.length - 1);
 }
 
+// Выводит сообщение до элементов массива, а потом сам массив
+function alert_mass(a, sBeforeMessage){
+	var sMessage = sBeforeMessage + "\n";
+	for (var i = 0; i < a.length; i++){
+		sMessage += a[i] + " ";
+	}
+	alert(sMessage);
+}
+
 /**
  * Исключает повторяющиеся элементы из массива a
  *
@@ -118,11 +139,14 @@ function quick_sort(data, compare, exchange){
  */
 	function grab_mins(a, mins, minsNum){
 		lengthA = a.length;
-		if (lengthA < minsNum)
-			minsNum = lengthA;
+		if (lengthA < minsNum){
+			alert("Не хватает элементов для вычисления " + minsNum + " минимума");
+			return false;
+		}
 		for (var i = 0; i < minsNum; i++){
 			mins[i] = a[i];
 		}
+		return true;
 	}
 
 /**
@@ -135,13 +159,16 @@ function quick_sort(data, compare, exchange){
  */
 	function grab_maxs(a, maxs, maxsNum){
 		lengthA = a.length;
-		if (lengthA < maxsNum)
-			maxsNum = lengthA;
+		if (lengthA < maxsNum){
+			alert("Не хватает элементов для вычисления " + maxsNum + " максимума");
+			return false;
+		}
 		var j = 0;
-		for (var i = maxsNum; i > 0; i--){
+		for (var i = lengthA - 1; i >= (lengthA - maxsNum); i--){
 			maxs[j] = a[i];
 			j++;
 		}
+		return true;
 	}
 
  /**
@@ -151,7 +178,12 @@ function quick_sort(data, compare, exchange){
  * @param maxs Array
  */
 	function alert_results(sBeforeMin, mins, sBeforeMax, maxs){
-		var sAlertText = sBeforeMin + mins[mins.length-1] + "\n" + 
-										sBeforeMax + maxs[maxs.length-1];
-		alert(sAlertText);
+		var min = mins[mins.length-1];
+		var max = maxs[maxs.length-1];
+		var sAlertText = sBeforeMin + min + "\n" + 
+										sBeforeMax + max;
+		if (min == undefined || max == undefined)
+			alert("Введите больше чисел")
+		else
+			alert(sAlertText);
 	}
